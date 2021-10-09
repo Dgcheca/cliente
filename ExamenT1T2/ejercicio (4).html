@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function generarRandom(){
+        return Math.floor(Math.random() *5 +1);
+    }
+
+
+        var cartera = 50;
+        var dineroApuesta;
+        var dadoApuesta;
+
+        alert("Bienvenido al casino de vera! aqui puedes jugar a los dados!");
+        do {
+            do {
+                alert("Debes apostar del 1 al 6, aun te quedan: "+cartera+" en la cartera");
+                var dadoApuesta = prompt("A que numero del dado apuestas?");
+                var dineroApuesta = parseInt(prompt("Y que cantidad apuestas?"));
+            } while (dadoApuesta > 6 || dadoApuesta < 1 || parseInt(dineroApuesta > cartera));
+           
+            var dadoTirada = generarRandom();
+
+            if (dadoApuesta == dadoTirada) {
+                parseInt(cartera += dineroApuesta);
+                alert("Enhorabuena! has acertado, ganas: " + dineroApuesta);
+            } else {
+                parseInt(cartera -= dineroApuesta);
+                alert("Vaaaaya! has perdido, ha salido el: " + dadoTirada+ ". pierdes lo apostado");
+            }
+        } while (cartera > 0 && cartera <200);
+
+        if (cartera <= 0) {
+            alert("Lastima! nos vemos cuando tengas mas dinero!");
+        } else if (cartera >= 200){
+            alert("No podemos dejarte ganar mas dinero! nos vemos!");
+        }
+       
+    </script>
+</body>
+</html>

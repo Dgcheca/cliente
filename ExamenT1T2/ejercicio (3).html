@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    function generarRandom(max){
+        return Math.floor(Math.random() * max);
+    }
+        var numeroAzar = generarRandom(100);
+        var acierto = false;
+        var contador = 6;
+        alert("Vamos a jugar a un juego: Voy a pensar un numero al azar, y tienes que adivinarlo");
+        do {
+            var numeroIntroducido = prompt("Introduce el numero que crees que he pensado, tienes: "+contador+" intentos");
+            if (numeroIntroducido == numeroAzar) {
+                acierto = true;   
+                contador--;
+                alert("Correcto!");
+                break;
+            } else if (numeroIntroducido > numeroAzar){
+                alert("No! el numero que he pensado es menor que ese!");
+                contador--;
+            } else if (numeroIntroducido < numeroAzar){
+                alert("No! el numero que he pensado es mayor que ese!");
+                contador--;
+            }
+        } while (acierto == false && contador > 0);
+        
+        if (acierto == false && contador == 0) {
+            alert("Oh! lo siento! te has quedado sin intentos! recarga para volver a intentarlo");
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var cantidad = prompt("Cuantas lavadoras ultralowcost a 10 euros quieres comprar? El descuento del 12 % empieza a partir de 8");
+        var precio = 10;
+        var descuento = 0.12;
+        var precioFinal = precio * cantidad;
+        
+        if (cantidad >= 8 && precioFinal >= 55) {
+            precioFinal = precioFinal - (precioFinal * descuento);
+            alert("La compra tenia descuento! al final se queda en: " + precioFinal);
+        } else {
+            alert("El precio total es: " + precioFinal);
+        }
+
+
+        </script>
+</body>
+</html>
