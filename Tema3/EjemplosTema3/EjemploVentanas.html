@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script type="text/javascript">
+
+        function inicializar() {
+            document.getElementById("crear-ventana1").onclick = crearNueva1;
+            document.getElementById("crear-ventana2").onclick = crearNueva2;
+            document.getElementById("crear-ventana3").onclick = crearNueva3;
+
+            document.getElementById("cerrar-ventana1").onclick = cerrarNueva1;
+            document.getElementById("cerrar-ventana2").onclick = cerrarNueva2;
+            document.getElementById("cerrar-ventana3").onclick = cerrarNueva3;
+
+            document.getElementById("abiertas").onclick = ventanasAbiertas;
+            document.getElementById("cerradas").onclick = ventanasCerradas;
+        }
+        var nuevaVentana1;
+        var nuevaVentana2;
+        var nuevaVentana3;
+        function crearNueva1() {
+            nuevaVentana1 = window.open("http://www.google.es", "", "height=400,width=800");
+        }
+        function crearNueva2() {
+            nuevaVentana2 = window.open("http://www.marca.com", "", "height=400,width=800");
+        }
+        function crearNueva3() {
+            nuevaVentana3 = window.open("https://www.warhammer-community.com/", "", "height=400,width=800");
+        }
+        function cerrarNueva1() {
+            if (nuevaVentana1) {
+                nuevaVentana1.close(); nuevaVentana1 = null;
+            }
+        }
+        function cerrarNueva2() {
+            if (nuevaVentana2) {
+                nuevaVentana2.close(); nuevaVentana2 = null;
+            }
+        }
+        function cerrarNueva3() {
+            if (nuevaVentana3) {
+                nuevaVentana3.close(); nuevaVentana3 = null;
+            }
+        }
+        function ventanasAbiertas() {
+            var nv1 = false;
+            var nv2 = false;
+            var nv3 = false;
+            if (nuevaVentana1){
+                nv1 = true;
+            }
+            if (nuevaVentana2){
+                nv3 = true;
+            }
+            if (nuevaVentana3){
+                nv3 = true;
+            }
+            alert();
+        }
+        function ventanasCerradas() {
+            return nuevaVentana1.closed(),nuevaVentana2.closed(),nuevaVentana3.closed();
+        }
+
+    </script>
+</head>
+
+<body onLoad="inicializar()">
+    <h1>Abrimos y cerramos ventanas</h1>
+    <form>
+        <p> 
+            <input type="button" id="crear-ventana1" value="Crear Nueva Ventana1">
+            <input type="button" id="crear-ventana2" value="Crear Nueva Ventana2">
+            <input type="button" id="crear-ventana3" value="Crear Nueva Ventana3"> <br>
+
+            <input type="button" id="cerrar-ventana1" value="Cerrar Nueva Ventana1">
+            <input type="button" id="cerrar-ventana2" value="Cerrar Nueva Ventana2">
+            <input type="button" id="cerrar-ventana3" value="Cerrar Nueva Ventana3"> <br>
+
+            <input type="button" id="abiertas" value="Ventanas abiertas">
+            <input type="button" id="cerradas" value="Ventanas cerradas">
+        </p>
+    </form>
+
+</html>

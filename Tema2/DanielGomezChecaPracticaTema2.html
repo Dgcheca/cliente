@@ -7,7 +7,47 @@
     <title>Document</title>
 </head>
 <body>
-    var num1 = 0;
-    var num2 = 0;
+    <script>
+
+        //EJERCICIO 1
+    var num1 = 4;
+    var num2 = 8;
+
+    if (num1 > num2){
+        console.log(num1 + " es mayor que " + num2);
+    } else if (num2 > num1){
+        console.log(num2 + " es mayor que " + num1);
+    } else {
+        console.log(num1 + " es igual que " + num2);
+    }
+        //EJERCICIO 2
+    for (var i = 0; i <= 100; i++) {
+        if (i%5==0) {
+            console.log(i);
+        }
+    }
+
+        //EJERCICIO 3
+    var contador=0;
+    var multiplo=1;
+    while (contador < 10) {
+        if (multiplo%2==0 && multiplo%3==0){
+            console.log(multiplo);
+            contador++;
+        }
+        multiplo++;
+    }
+
+        //EJERCICIO 4
+    var sum1 =parseFloat(prompt("Primer numero para sumar?"));
+    var sum2 =parseFloat(prompt("segundo numero para sumar?"));
+    console.log(sum1+sum2);
+
+        //EJERCICIO 5
+    console.log(80/4);
+
+        //EJERCICIO 6
+    console.log(120*16);
+</script>
 </body>
 </html>
