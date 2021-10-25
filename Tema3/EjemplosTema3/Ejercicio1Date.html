@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //ejercicio 1
+        var fecha = new Date(2000,0,1);
+        var ahora = Date.now();
+        document.write("La diferencia en milisegundos desde fecha y ahora es: "+ (ahora - fecha));
+    </script>
+
+    <br>
+
+    <script>
+        //ejercicio 2
+        var cadena = prompt("Introduce una cadena");
+        document.write("La longitud de la cadena introducida: "+cadena.length);
+    </script>
+   
+    <br>
+
+    <script>
+        //ejercicio 3
+        var ancho = screen.width;
+        var largo = screen.height;
+        var diagonal =Math.sqrt(Math.pow(ancho,2) + Math.pow(largo,2));
+        document.write("La digonal de esta ventana es: " + diagonal);
+    </script>
+
+    <br>
+    
+    <script>
+        //ejercicio 4
+        window.document.bgColor="grey";
+        window.document.fgColor="white";
+        window.document.title="Modificaciones del objeto Document";
+    </script>
+    <p>Texto de prueba</p>
+
+</body>
+</html>
