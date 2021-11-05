@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+
+        function inicializar() {
+            document.getElementById("e1").onclick = abrirE1;
+            document.getElementById("e2").onclick = abrirE2;
+            document.getElementById("e3").onclick = abrirE3;
+            document.getElementById("e4").onclick = abrirE4;
+            document.getElementById("e5").onclick = abrirE5;
+            document.getElementById("e6").onclick = abrirE6;
+            document.getElementById("e7").onclick = abrirE7;
+            document.getElementById("e8").onclick = abrirE8;
+        }
+        var nuevaVentana;
+        function abrirE1() { nuevaVentana = window.open("e1.html", "", "height==800,width=800"); }
+        function abrirE2() { nuevaVentana = window.open("e2.html", "", "height==800,width=800"); }
+        function abrirE3() { nuevaVentana = window.open("e3.html", "", "height==800,width=800"); }
+        function abrirE4() { nuevaVentana = window.open("e4.html", "", "height==800,width=800"); }
+        function abrirE5() { nuevaVentana = window.open("e5.html", "", "height==800,width=800"); }
+        function abrirE6() { nuevaVentana = window.open("e6.html", "", "height==800,width=800"); }
+        function abrirE7() { nuevaVentana = window.open("e7.html", "", "height==800,width=800"); }
+        function abrirE8() { nuevaVentana = window.open("e8.html", "", "height==800,width=800"); }
+    </script>
+</head>
+
+<body onLoad="inicializar()">
+
+
+    <h1> EJERCICIOS TEMA 3 </h1>
+    <form>
+        <p><input type="button" id="e1" value="Ejercicio 1"></p>
+        <p><input type="button" id="e2" value="Ejercicio 2"></p>
+        <p><input type="button" id="e3" value="Ejercicio 3"></p>
+        <p><input type="button" id="e4" value="Ejercicio 4"></p>
+        <p><input type="button" id="e5" value="Ejercicio 5"></p>
+        <p><input type="button" id="e6" value="Ejercicio 6"></p>
+        <p><input type="button" id="e7" value="Ejercicio 7"></p>
+        <p><input type="button" id="e8" value="Ejercicio 8"></p>
+    </form>
+</body>
+
+</html>

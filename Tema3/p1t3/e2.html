@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>FECHA ACTUAL</h1>
+    <p></p> 
+    <script type="text/javascript">
+        var fecha = new Date();
+        if (fecha.getMonth() == 0) {
+            var mes = "Enero";
+        } else if (fecha.getMonth() == 1) {
+            var mes = "Febrero";
+        } else if (fecha.getMonth() == 2) {
+            var mes = "Marzo";
+        }else if (fecha.getMonth() == 3) {
+            var mes = "Abril";
+        }else if (fecha.getMonth() == 4) {
+            var mes = "Mayo";
+        }else if (fecha.getMonth() == 5) {
+            var mes = "Junio";
+        }else if (fecha.getMonth() == 6) {
+            var mes = "Julio";
+        }else if (fecha.getMonth() == 7) {
+            var mes = "Agosto";
+        }else if (fecha.getMonth() == 8) {
+            var mes = "Septiembre";
+        }else if (fecha.getMonth() == 9) {
+            var mes = "Octubre";
+        }else if (fecha.getMonth() == 10) {
+            var mes = "Noviembre";
+        }else if (fecha.getMonth() == 11) {
+            var mes = "Diciembre";
+        }
+        
+        document.write("La fecha actual es: " + fecha.getDate() + " de "+ mes + " del " + fecha.getFullYear());
+    </script>
+</body>
+</html>

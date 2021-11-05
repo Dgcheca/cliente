@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/Javascript">
+    
+    function horoscopo(form) {
+        var dia = form.dia.value; 
+        var mes = form.mes.value;
+        var signo = "";
+        var frame = document.getElementById("marco");
+        var despliegue = true;
+
+        if ((mes == 1 && dia <=20) || (mes == 12 && dia >= 22) ){  // CAPRICORNIO
+            signo = "Capricornio";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Capricornio";
+        } else if ((mes == 1 && dia >=21) || (mes == 2 && dia <= 18) ) { //ACUARIO
+            signo = "Acuario";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Acuario";
+        }else if ((mes == 2 && dia >=19) || (mes == 3 && dia <= 20) ) { //PISCIS
+            signo = "Piscis";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Piscis";
+        }else if ((mes == 3 && dia >=21) || (mes == 4 && dia <= 20) ) { //ARIES
+            signo = "Aries";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Aries";
+        }else if ((mes == 4 && dia >=21) || (mes == 5 && dia <= 21) ) { //TAURO
+            signo = "Tauro";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Tauro";
+        }else if ((mes == 5 && dia >=22) || (mes == 6 && dia <= 21) ) { //GEMINIS
+            signo = "Geminis";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Geminis";
+        }else if ((mes == 6 && dia >=22) || (mes == 7 && dia <= 22) ) { //CANCER
+            signo = "Cancer";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Cancer";
+        }else if ((mes == 7 && dia >=23) || (mes == 8 && dia <= 23) ) { //LEO
+            signo = "Leo";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Leo";
+        }else if ((mes == 8 && dia >=24) || (mes == 9 && dia <= 23) ) { //VIRGO
+            signo = "Virgo";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Virgo";
+        }else if ((mes == 9 && dia >=24) || (mes == 10 && dia <= 23) ) { //LIBRA
+            signo = "Libra";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Libra";
+        }else if ((mes == 10 && dia >=24) || (mes == 11 && dia <= 22)) { //ESCORPIO
+            signo = "Escorpio";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Escorpio";
+        }else if ((mes == 11 && dia >=23) || (mes == 12 && dia <= 21)) { //SAGITARIO
+            signo = "Sagitario";
+            frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Sagitario";
+        }
+        else{
+            signo = "Ese signo no es valido";
+        }
+    }
+    </script>
+
+    <form name="cumple" action="" method="get">
+        <p> Introduce tu dia de nacimiento: 
+            <input name="dia" type="number" min="1" max="31" value="1">
+        </p>
+        <p>
+            Introduce tu mes de nacimiento: 
+            <input name="mes" type="number" min="1" max="12" value="1">
+        </p>
+        <input type="button" id="consultar" value="Consultar Horoscopo" onclick="horoscopo(this.form)">
+    </form>
+    <iframe id="marco" name="marco" src="" frameborder="" width = "600" height = "650"></iframe>
+
+</body>
+</html>
