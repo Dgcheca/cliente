@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EJERCICIO 3</title>
 </head>
 <body>
 
     <script type="text/Javascript">
     
-    function horoscopo(form) {
+    function horoscopo(form) { //PASAMOS EL FORMULARIO A UNA FUNCION QUE SEPARA DIA Y MES
         var dia = form.dia.value; 
         var mes = form.mes.value;
         var signo = "";
         var frame = document.getElementById("marco");
         var despliegue = true;
 
+        //COMPARAMOS EL DIA Y EL MES, DEVOLVIENDO EL SIGNO QUE LE CORRESPONDE
+        //Y MOSTRAMOS EL LINK REFERENCIA A CADA SIGNO EN EL IFRAME
         if ((mes == 1 && dia <=20) || (mes == 12 && dia >= 22) ){  // CAPRICORNIO
             signo = "Capricornio";
             frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Capricornio";
@@ -54,13 +56,14 @@
             signo = "Sagitario";
             frame.src = "https://www.lavanguardia.com/horoscopo/signos-zodiaco-Sagitario";
         }
-        else{
+        else{ //SI CONSIGUIESEN INTRODUCIR UN VALOR NO VALIDO DE ALGUNA FORMA, LLEGARIA AQUI
             signo = "Ese signo no es valido";
         }
     }
     </script>
-
-    <form name="cumple" action="" method="get">
+    <!--PEDIMOS POR FORMULARIO EL DIA Y EL MES DE NACIMIENTO PARA ASEGURARNOS QUE SEAN NUMEROS VALIDOS-->
+    <form name="cumple" action="" method="get"> 
+        <H1>CONSULTA TU HOROSCOPO</H1>
         <p> Introduce tu dia de nacimiento: 
             <input name="dia" type="number" min="1" max="31" value="1">
         </p>

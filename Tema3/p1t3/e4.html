@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 4</title>
+</head>
+
+<body>
+    <h1>Eliminar letras repetidas</h1>
+    <script>
+        function eliminarRepetidas(cadena) {
+            var cadenaArreglada = ""; //CREAMOS LA CADENA A DEVOLVER VACIA
+            let letra = ""; //Y EL CHAR LETRA A LETRA
+            for (let i = 0; i < cadena.length; i++) { 
+                
+                if (cadena.charAt(i) != letra) { //SI LA LETRA ACTUAL ES DISTINTA A LA GUARDADA EN "LETRA" LA CONCATENAMOS A CADENAARREGLADA
+                    cadenaArreglada += cadena.charAt(i); //SI NO, LA DESCARTA
+                }
+                letra = cadena.charAt(i); //GUARDAMOS LA LETRA ACTUAL EN "LETRA" PARA SEGUIR COMPARANDO
+            }
+
+            document.write(cadenaArreglada); //DEVOLVEMOS EL MENSAJE YA ARREGLADO
+        }
+
+
+        var cadena = prompt("Introduce una cadena"); //PEDIMOS LA CADENA A COMPROBAR Y LA PASAMOS A LA FUNCION
+        eliminarRepetidas(cadena);
+    </script>
+
+</body>
+
+</html>

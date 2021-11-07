@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function primos() {
+            primos = new Array();
+            for (let i = 0; i < 100000; i++) {
+                var primo = true;
+                for (let j = 2; j < i; j++) {
+                    if (i%j == 0) {
+                    primo = false;
+                    } 
+                }
+                
+                
+            }
+        }
+       
+        function palindromo() {
+            var palindromos = new Array();
+            for (let i = 0; i < 100000; i++) {
+                var longitud = i.length -1;
+                for (let j = 0; j < longitud; j++) {
+                    if (i[j] == i[longitud - j])  {
+                        palindromo = true;
+                    } else {
+                        palindromo = false;
+                    }
+                }
+                if (palindromo == true) {
+                    palindromo.push(i); 
+                    
+                }
+
+            }
+            return $palindromos;
+        }
+        palindromo;
+        document.write(palindromo().toString);
+    </script>
+</body>
+</html>

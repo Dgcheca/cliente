@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 7</title>
+</head>
+<body>
+    <h1>NUMEROS ALEATORIOS DEL 0 AL 99 CON 5 DECIMALES</h1>
+    <script>
+        function numerosRandom() {
+            
+            var numero = Math.random() * 100; //GENERAMOS UN NUMERO ALEATORIO DEL 0 AL 99 (EL 100 NO SE INCLUYE)
+            numero = numero.toFixed(5); //FIJAMOS LOS DECIMALES EN 5
+            if (numero.length = 7) { //SI LA LONGITUD DEL NUMERO ES 7 (LOS 5 DECIMALES, EL PUNTO Y UNA UNIDAD)...
+
+                var cadenaNumeros = "0"+ numero;//CONCATENAMOS UN 0 ANTES DE GUARDARLO 
+            } else {
+                var cadenaNumeros = numero; //SI NO, SIGNIGICA QUE YA TIENE UNIDADES Y DECENAS
+            }
+            return cadenaNumeros; //Y LO DEVOLVEMOS YA TRANSFORMADO
+        }
+
+
+        document.write(numerosRandom());
+    </script>
+</body>
+</html>

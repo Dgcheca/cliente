@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 5</title>
+</head>
+
+<body>
+    <h1>INTERCAMBIAMOS MAYUSCULAS Y MINUSCULAS</h1>
+    <script>
+        function intercambiarMayMin(mensaje) { 
+            var cadenaArreglada = ""; //CREAMOS UNA CADENA VACIA PARA IR CONCATENANDOLA MODIFICADA
+
+            for (let i = 0; i < mensaje.length; i++) {
+                if (mensaje.charAt(i).toLowerCase() === mensaje.charAt(i)) { //SI LA LETRA QUE COMPROBAMOS ES IGUAL A SU VERSION EN MINUSCULAS, ES QUE ES MINUSCULA
+                    cadenaArreglada += mensaje.charAt(i).toUpperCase(); //Y LA CONCATENAMOS EN MAYUSCULAS
+                } else if (mensaje.charAt(i).toUpperCase() === mensaje.charAt(i)) { //SI ES IGUAL A SU VERSION EN MAYUSCULAS, ES QUE ES MAYUSCULA
+                    cadenaArreglada += mensaje.charAt(i).toLowerCase(); //Y LA CONCATENAMOS EN MINUSCULA
+                }
+            }
+            return cadenaArreglada; //Y LA DEVOLVEMOS CORREGIDA
+        }
+
+        var cadena = prompt("Introduce la cadena a intercambiar"); //PEDIMOS LA CADENA A MODIFICAR
+        document.write(intercambiarMayMin(cadena)); //Y LA PASAMOS POR LA FUNCION ANTES DE ESCRIBIRLA
+    </script>
+</body>
+
+</html>

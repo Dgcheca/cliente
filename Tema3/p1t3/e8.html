@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIO 8</title>
+</head>
+
+<body>
+    <h1>CALCULO DEL AREA Y PERIMETRO DE TRIANGULOS</h1>
+    <script>
+
+        function calcularPerimetro(lado1, lado2, lado3) { //CALCULA EL PERIMETRO DEL TRIANGULO SUMANDO TODOS SUS LADOS, SEA EL TRIANGULO QUE SEA
+            var perimetro = lado1 + lado2 + lado3;
+            return perimetro; //Y DEVUELVE LA SUMA
+        }
+
+        function calcularArea(lado1, lado2, lado3) {
+            if ((lado1 == lado2) && (lado2 == lado3)) { //TRIANGULO EQUILATERO
+               var area = ((Math.sqrt(3)/4)*Math.pow(lado1,2)); //FORMULA PARA LOS TRIANGULOS EQUILATEROS
+
+            } else if (((lado1 == lado2) && (lado1 != lado3)) || ((lado1 == lado3) && (lado1 != lado2)) || ((lado3 == lado2) && (lado1 != lado3))) {
+                //ASI COMPROBAMOS QUE SEA UN TRIANGULO ISOSCELES, DOS DE SUS LADOS SON IGUALES Y EL TERCERO DIFERENTE
+                if (lado1 == lado2) { //SEGUN QUE LADOS SEAN IGUALES, SE GUARDA UNO EN UNA VARIABLE, Y EL DIFERENTE EN OTRA
+                    var a = lado1;
+                    var b = lado3;
+                } else if (lado1 == lado3) {
+                    var a = lado1;
+                    var b = lado2;
+                } else if (lado2 == lado3) {
+                    var a = lado2;
+                    var b = lado1;
+                }
+                var area = (b * Math.sqrt(Math.pow(a,2) - Math.pow(b,2) / 4)) / 2; //FORMULA DE LOS TRIANGULOS ISOSCELES
+
+            } else if ((lado1 != lado2) && (lado2 != lado3)) { //SI TODOS LOS LADOS SON DIFERENTES ES UN TRIANGULO ESCALENO
+                var s = calcularPerimetro(lado1, lado2, lado3) / 2; //PEDIMOS EL PERIMETRO PARA LA FORMULA
+                var area = Math.sqrt(s * (s - lado1) * (s - lado2) * (s - lado3)); //FORMULA DE LOS ESCALENOS
+
+            } else{
+                var area = 0; //SI METES DATOS NO NUMERICOS O EXTRAÑOS, DEVUELVE 0
+            }
+            return area;
+        }
+        //PREGUNTAMOS POR LOS 3 LADOS EN CUALQUIER ORDEN Y GUARDAMOS LOS VALORES
+        var lado1 = parseInt(prompt("Introduce la longitud del primer lado"));
+        var lado2 = parseInt(prompt("Introduce la longitud del segundo lado"));
+        var lado3 = parseInt(prompt("Introduce la longitud del tercer lado"));
+
+        document.write("El area del triangulo es: " + calcularArea(lado1, lado2, lado3) + "<br>") //PASAMOS POR FUNCION Y MOSTRAMOS
+        document.write("El perimetro del triangulo es: " + calcularPerimetro(lado1, lado2, lado3) + "<br>");
+    </script>
+</body>
+
+</html>

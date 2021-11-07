@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EJERCICIO 2</title>
 </head>
+
 <body>
     <h1>FECHA ACTUAL</h1>
-    <p></p> 
+    <br>
     <script type="text/javascript">
-        var fecha = new Date();
-        if (fecha.getMonth() == 0) {
-            var mes = "Enero";
-        } else if (fecha.getMonth() == 1) {
-            var mes = "Febrero";
-        } else if (fecha.getMonth() == 2) {
-            var mes = "Marzo";
-        }else if (fecha.getMonth() == 3) {
-            var mes = "Abril";
-        }else if (fecha.getMonth() == 4) {
-            var mes = "Mayo";
-        }else if (fecha.getMonth() == 5) {
-            var mes = "Junio";
-        }else if (fecha.getMonth() == 6) {
-            var mes = "Julio";
-        }else if (fecha.getMonth() == 7) {
-            var mes = "Agosto";
-        }else if (fecha.getMonth() == 8) {
-            var mes = "Septiembre";
-        }else if (fecha.getMonth() == 9) {
-            var mes = "Octubre";
-        }else if (fecha.getMonth() == 10) {
-            var mes = "Noviembre";
-        }else if (fecha.getMonth() == 11) {
-            var mes = "Diciembre";
+
+        function nombreMes(mesNumero) { //RECIBIMOS EL NUMERO DEL MES
+            var mesEscrito = "";
+
+            if (mesNumero == 0) { //Y LO OBTENEMOS SU NOMBRE COMPARANDO LOS VALORES
+                mesEscrito = "Enero";
+            } else if (mesNumero == 1) {
+                mesEscrito = "Febrero";
+            } else if (mesNumero == 2) {
+                mesEscrito = "Marzo";
+            } else if (mesNumero == 3) {
+                mesEscrito = "Abril";
+            } else if (mesNumero == 4) {
+                mesEscrito = "Mayo";
+            } else if (mesNumero == 5) {
+                mesEscrito = "Junio";
+            } else if (mesNumero == 6) {
+                mesEscrito = "Julio";
+            } else if (mesNumero == 7) {
+                mesEscrito = "Agosto";
+            } else if (mesNumero == 8) {
+                mesEscrito = "Septiembre";
+            } else if (mesNumero == 9) {
+                mesEscrito = "Octubre";
+            } else if (mesNumero == 10) {
+                mesEscrito = "Noviembre";
+            } else if (mesNumero == 11) {
+                mesEscrito = "Diciembre";
+            }
+            return mesEscrito; //DEVOLVEMOS EL STRING CON EL NOMBRE DEL MES
         }
-        
-        document.write("La fecha actual es: " + fecha.getDate() + " de "+ mes + " del " + fecha.getFullYear());
+
+        var fecha = new Date(); //CREAMOS UNA VARIABLE CON LA FECHA ACTUAL
+        //MUESTRAS LA FECHA ACTUAL CAMBIANDO EL NUMERO DEL MES POR EL NOMBRE ESCRITO USANDO LA FUNCION NOMBREMES()
+        document.write("La fecha actual es: " + fecha.getDate() + " de " + nombreMes(fecha.getMonth()) + " del " + fecha.getFullYear());
+
     </script>
 </body>
+
 </html>
