@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <script>
+
+        var nombres = [];
+        var nombre = "";
+
+        for (let i = 0; i <= 2; i++) { //Hacemos un bucle que pregunta tres veces un nombre
+            nombre = prompt("Introduce el nombre numero " + i);
+            nombres.push(nombre); //Conforme introducimos el nombre lo metemos en el array
+        }
+
+        document.write("<table border=1>"); //Creamos una tabla para el for
+        for (let i = 0; i <= nombres.length; i++) { //Otro for con la longitud del array
+
+            document.write("<tr>");
+            document.write("<td>" +nombres[i]+"</td>"); 
+            //Pintamos las columnas de la tabla y su contenido
+            document.write("</tr>");
+        }
+        document.write("</table>"); //Cerramos la tabla
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Array</title>
+</head>
+
+<body>
+    <script type="text/Javascript">
+        function horoscopo(form)  {
+            var linea = form.cajaTexto.value;
+            palabras = linea.split(" ");
+            document.write("Primera palabra:" + palabras[0] + "<br>");
+            document.write("Ultima palabra:" + palabras[palabras.length-1]+ "<br>");
+            document.write("Numero de palabras:" + palabras.length+ "<br>");
+            document.write("Ordenadas alfabeticamente:"+ "<br>");
+            palabras.sort();
+            for (let i = 0; i < palabras.length; i++) {
+                document.write(palabras[i] + " ");
+            }
+        }
+    </script>
+
+    <form name="montarArray" action="" method="get"> 
+        <input name="cajaTexto" type="text">
+        <input type="button" id="consultar" value="Aceptar" onclick="horoscopo(this.form)">
+    </form>
+
+</body>
+
+</html>
