@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON Aviones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <h1 class="h1">Vuelos Ibserveis</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-3 ">
+                <button type="button" class="btn btn-primary" onclick="mostrarArray(arrayVuelos)">
+                    .Ver todos los vuelos.
+                </button>
+            </div>
+            <div class="col-3 ">
+                <button type="button" class="btn btn-primary" onclick="mostrarArray">
+                    .Ver vuelos a Destino.
+                </button>
+            </div>
+            <div class="col-3 ">
+                <button type="button" class="btn btn-primary" onclick="mostrarArray">
+                    .Ver vuelos por Hora.
+                </button>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div id="salidaDatos"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- El código se ejecuta cuando ya tenemos disponible la <div id=salidadeDatos
+ Otra alternativa es disparar el código con botones -->
+
+<script type="text/javascript">
+    var arrayVuelos = [
+        {
+            "origen": "Palma",
+            "destino": "Oslo",
+            "url": "http://www.ibserveis.com/vuelo1.html",
+            "horaSalida": "10:30",
+            "horaLlegada": "14:40"
+        },
+        {
+            "origen": "Lugo",
+            "destino": "Madrid",
+            "url": "http://www.ibserveis.com/vuelo2.html",
+            "horaSalida": "11:20",
+            "horaLlegada": "12:40"
+        },
+        {
+            "origen": "Barna",
+            "destino": "Paris",
+            "url": "http://www.ibserveis.com/vuelo3.html",
+            "horaSalida": "10:10",
+            "horaLlegada": "16:20"
+
+        },
+        {
+            "origen": "Palma",
+            "destino": "Madrid",
+            "url": "http://www.ibserveis.com/vuelo4.html",
+            "horaSalida": "11:30",
+            "horaLlegada": "13:40"
+        },
+        {
+            "origen": "Cuevas",
+            "destino": "Sentinel del norte",
+            "url": "http://www.ibserveis.com/vuelo5.html",
+            "horaSalida": "19:00",
+            "horaLlegada": "23:20"
+        },
+        {
+            "origen": "Almeria",
+            "destino": "Corea la Mala",
+            "url": "http://www.ibserveis.com/vuelo6.html",
+            "horaSalida": "11:30",
+            "horaLlegada": "16:00"
+        },
+        {
+            "origen": "Mojacar",
+            "destino": "Malaga",
+            "url": "http://www.ibserveis.com/vuelo7.html",
+            "horaSalida": "11:20",
+            "horaLlegada": "13:00"
+        },
+        {
+            "origen": "Vera",
+            "destino": "Londres",
+            "url": "http://www.ibserveis.com/vuelo8.html",
+            "horaSalida": "9:10",
+            "horaLlegada": "17:20"
+
+        },
+        {
+            "origen": "Garruchas",
+            "destino": "Dublin",
+            "url": "http://www.ibserveis.com/vuelo9.html",
+            "horaSalida": "10:30",
+            "horaLlegada": "14:40"
+        },
+        {
+            "origen": "Velezrubio",
+            "destino": "Roma",
+            "url": "http://www.ibserveis.com/vuelo10.html",
+            "horaSalida": "18:00",
+            "horaLlegada": "23:40"
+        }
+    ]
+
+    function mostrarArray(datos) {
+        var texto = "";
+        for (let i = 0; i < datos.length; i++) {
+            texto += `<p> origen: ${datos[i].origen} <a href= ${datos[i].url}>
+            destino: ${datos[i].destino}</a></p><br>`;
+        }
+        document.getElementById(salidaDatos);
+    }
+</script>
+
+</html>

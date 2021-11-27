@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function CambiaColorLetra(nombreColor) {
+            let obj = document.getElementById("informacion");
+          
+            obj.style.color = nombreColor;
+            
+        }
+        function CambiaColorFondo(nombreColor) {
+            let clss = document.getElementById("informacion");
+            clss.style.backgroundColor = nombreColor;
+        }
+    </script>
+</head>
+<body>
+    <p id="informacion">Curso de ECMScript6</p>
+    <button onclick="CambiaColorLetra('blue');">Letra Azul</button>
+    <button onclick="CambiaColorLetra('red');">Letra Rojo</button>
+    <button onclick="CambiaColorFondo('blue');">fondo Azul</button>
+    <button onclick="CambiaColorFondo('red');">fondo Rojo</button>
+</body>
+</html>
