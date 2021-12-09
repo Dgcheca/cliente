@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e2</title>
+</head>
+<body>
+    <script>
+        //METEMOS EL ARRAY CON TODAS LAS LETRAS QUE PUEDE TENER UN DNI 
+        var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+        function Identidad() { //EL OBJETO IDENTIDAD SIN PARAMETROS
+            this.generarLetra = function (dni) { //A LA FUNCION LE PASAMOS UN DNI SIN LETRA
+                let indice = dni % 23; //SACAMOS EL INDICE CALCULANDO EL MODULO
+                let letra = letras[indice]; //USAMOS EL INDICE PARA SACAR LA LETRA EQUIVALENTE DEL ARRAY
+                var dniCompleto = dni+letra; //Y LOS COMBINAMOS EN DNICOMPLETO
+                return dniCompleto; 
+            };
+            this.comprobarDNI = function (dniCompleto){ //PASAMOS UN DNI COMPLETO CON LETRA
+                let letra = dniCompleto[8]; //LA POSICION 8 SIEMPRE CORRESPONDE A LA LETRA, LA SEPARAMOS
+                let dni = dniCompleto.slice(0,8); //SEPARAMOS EL RESTO PARA TENER LOS NUMEROS APARTE
+                return (letras[dni%23] == letra); //REPETIMOS LA JUGADA COMPROBANDO LA LETRA DEL ARRAY
+                //Y DEVOLVEMOS TRUE O FALSE SI COINCIDE O NO CON LA LETRA QUE TENIA ASIGNADA ANTES
+            };
+        }
+        var documento = new Identidad;
+        var numero = documento.generarLetra("74727230");
+        document.write(numero);
+
+        var comprobacion = documento.comprobarDNI("74727230T");
+        document.write(comprobacion);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e3</title>
+</head>
+<body>
+    <script>
+          function calcularMenor(array) {
+            var menor = 999;
+            var pos = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i]<menor) {
+                    menor = array[i];
+                    pos = i+1;
+                }
+            }
+            return "El menor numero es: "+menor+" y estaba en la posicion: "+pos;
+        }
+
+        var numeros = prompt("15 numeros separados por ,");
+        var array = numeros.split(",");
+
+        document.write(calcularMenor(array));
+    </script>
+</body>
+</html>

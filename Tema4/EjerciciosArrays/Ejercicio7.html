@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e7</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <form class="form" id="nuevoArticulo">
+            <div class="row justify-content-center m-5">
+                <h1>NUEVO ARTICULO</h1>
+            </div>
+
+            <div class="row m-5">
+
+                <div class=" col-4">
+                    <label for="codigo" class="form-label">Codigo</label>
+                    <input class="form-control" name="codigo" type="text">
+                </div>
+                <div class=" col-4">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input class="form-control" name="precio" type="text">
+                </div>
+          
+
+            <div class=" col-4">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input class="form-control" name="descripcion" type="text">
+            </div>
+        </div>
+            <div class="row m-5">
+                <div class="col">
+                    <input type="button" id="botonNuevoArticulo" value="Enviar" onclick="obj_articulo(this.form)">
+                </div>
+            </div>
+
+        </form>
+        <div id="almacen"></div>
+       
+    </div>
+</body>
+
+<script type="text/Javascript">
+    var almacen = Array();
+
+
+    function Articulo(descripcion, codigo, precio) {
+        this.descripcion = descripcion;
+        this.codigo = codigo;
+        this.precio = precio;
+        this.iva = function () {
+            let total = parseInt(this.precio) - (this.precio * 21 / 100);
+            document.getElementById('iva').innerHTML=total;
+        };
+        this.total = function total(reb) {
+            let total = this.precio - (this.precio * reb / 100);
+            document.getElementById('total').innerHTML=total;
+        }
+    }
+
+    
+    function obj_articulo(form) {
+        let descripcion = form.descripcion.value;
+        let codigo = form.codigo.value;
+        let precio = form.precio.value;
+       
+        var art = new Articulo(descripcion, codigo, precio);
+        almacen.push(art);
+        let html = "";
+        for (let i = 0; i < almacen.length; i++) {
+           
+            html += '<table class="table table-bordered"><thead><th>Descripcion</th><th>Codigo</th><th>Precio</th></thead><tbody>';
+            html += "<tr><td>"+almacen[i].descripcion+"</td><td>"+almacen[i].codigo+"</td><td>"+almacen[i].precio+"€</td></tr>";
+            html += "<tr><td>Con IVA: <div id='iva'></div></td><td>Precio Total (con descuentos)</td><td><div id='total'></div></td></tr>";
+            html += "</tbody></table></div>";
+            document.getElementById('almacen').innerHTML=html;
+            almacen[i].iva();
+            almacen[i].total(1);
+            
+        }
+       
+     
+    }
+</script>
+
+</html>

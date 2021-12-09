@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e4</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <script>
+        function generarRandom(max) { //TODOS LA CONOCEMOS
+            return Math.floor(Math.random() * max);
+        }
+
+        //GENERAMOS EL BOMBO DE NUMEROS DEL 1 AL 50
+        var loteria = Array();
+        for (let i = 1; loteria.length < 50; i++) { //HASTA QUE LOTERIA NO TENGA LOS 49 NUMEROS NO PARAMOS
+            var bola = generarRandom(50); //QUE SE VAN GENERANDO AL AZAR
+            var contiene = false;
+            for (let j = 0; j < loteria.length; j++) { //DE ESTA FORMA COMPROBAMOS QUE ESTEN
+                if (loteria[j] == bola) {
+                    contiene = true;
+                }
+            }
+            if (contiene == false) { //Y SI NO ESTAN, LOS METE EN LOTERIA
+                loteria.push(bola);
+            }
+        }
+
+        function generarBillete() {
+            var numeros = Array(); //GENERAMOS EL BILLETE
+
+            for (let i = 0; i < 6; i++) {
+                let bola = loteria.pop(); //COGEMOS LOS 6 ULTIMOS NUMEROS, QUE ESTARAN AL AZAR
+                numeros.push(bola);//Y LOS METEMOS EN EL ARRAY
+            }
+            var complementario = loteria.pop(); //COGEMOS OTRO MAS PARA EL COMPLEMENTARIO
+            var reintegro = generarRandom(10); // Y UN RANDOM DEL 0 AL 9 PARA EL REINTEGRO
+
+            //VAMOS PINTANDO EN CADA SECCION LO QUE NOS INTERESA DEL BILLETE
+            document.getElementById("billeteCaja").innerHTML = 'LOTERIA PRIMITIVA';
+            document.getElementById("numeros").innerHTML = 'NUMEROS DEL BILLETE: ' + numeros.sort();
+            document.getElementById("complementario").innerHTML = 'COMPLEMENTARIO: ' + complementario;
+            document.getElementById("reintegro").innerHTML = 'REINTEGRO: ' + reintegro;
+            //HE TENIDO QUE CARGARME LA TABLA QUE ESTABA HACIENDO EN BOOTSTRAP PARA DEPURAR
+            //Y LA HE TENIDO QUE DEJAR ASI POR TIEMPO
+        }
+
+    </script>
+
+    <div class="container">
+        <form class="form">
+            <div class="row">
+                <button type="button" class="btn btn-primary" onclick="generarBillete()">Generar Billete</button>
+            </div>
+        </form>
+
+        <h1 id="billeteCaja"></h1>
+        <div id="numeros"></div>
+        <div id="complementario"></div>
+        <div id="reintegro"></div>
+    </div>
+</body>
+
+</html>

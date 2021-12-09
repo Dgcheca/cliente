@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e3</title>
+</head>
+<body>
+    <script>
+        //CREAMOS EL OBJETO CON TODAS LAS PROPIEDADES INCLUYENDO EL PORCENTAJE DE DESCUENTO QUE VA A TENER
+        function Inmueble(direccion, codigoPostal, localidad, provincia, metrosCuadrados, precio, desc) {
+            this.direccion = direccion;
+            this.codigoPostal = codigoPostal;
+            this.localidad = localidad;
+            this.provincia = provincia;
+            this.metrosCuadrados = metrosCuadrados;
+            this.precio = precio;
+            this.desc = desc;
+            this.descuento = function(desc) {
+                descuento = this.precio * desc/100; //HACE EL CALCULO DEL DESCUENTO DE UN GOLPE
+                return(this.precio - descuento);//Y LO DEVUELVE COMO VALOR
+            }
+            this.render = function () {
+                //CREAMOS UN MENSAJE CON TODOS LOS DATOS DEL OBJETO
+                mensaje = "Direccion: "+this.direccion+"</br>Codigo Postal: "+this.codigoPostal+"</br>Localidad: "+this.localidad+"</br>Provincia: "+this.provincia+"</br>Metros Cuadrados: "+metrosCuadrados+"</br>Precio original: "+this.precio;
+                //Y LE CONCATENAMOS EL PRECIO FINAL DESCONTADO PASANDO EL DESC A LA FUNCION DESCUENTO
+                mensaje += "</br>Precio con descuento: "+this.descuento(this.desc);
+                document.write(mensaje);
+            }
+        }
+    
+
+        var casa = new Inmueble("Calle Falsa 123","04210","Villa Piruleta","Ciudad del Chocolate",200,120000,15);
+        casa.render();
+    </script>
+</body>
+</html>

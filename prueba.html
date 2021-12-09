@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm" name="myForm">
+        <input type="text" name="User" value="Arsalan"/>
+        <input type="password" name="pass" value="123"/>
+        <input type="number" name="age" value="24"/>
+        <input type="text" name="email" value="johndoe@test.com"/>
+        <textarea name="message">Enter Your Message Her</textarea>
+
+    </form>
+    <script>
+//Assign Form by Id to a Variabe
+    var myForm = document.getElementById("myForm");
+    //Extract Each Element Value
+    for (var i = 0; i < myForm.elements.length; i++) {
+    console.log(myForm.elements[i].name, myForm.elements[i].value);
+    }
+    </script>
+</body>
+</html>

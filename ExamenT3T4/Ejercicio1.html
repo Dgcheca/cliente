@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>e1</title>
+</head>
+<body>
+    <!---------FORMULARIO DE PETICION DE DATOS--------->
+    <div class="container mt-5">
+        <form class="form">
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                </div>
+                <div class="col-2">
+                    <input type="number" class="form-control" name="edad" placeholder="edad">
+                </div>
+                <div class="col-4">
+                    <select name="aficion" class="form-control" id="">
+                        <option value="1" selected>Elegir</option>
+                        <option value="Informática">Informática</option>
+                        <option value="Deportes">Deportes</option>
+                        <option value="Musica">Musica</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-end mt-5">
+                <div class="col-4">
+                    <div class="mb-3">
+                        <input class="btn btn-primary" value="Enviar" onclick="validarForm(this.form)">
+                    </div>                    
+                </div>
+            </div>
+        </form>
+          <!---------FIN DEL FORMULARIO DE PETICION DE DATOS--------->
+        <!---------DIV VACIO DONDE IMPRIMIREMOS LOS ERRORES QUE SURJAN--------->
+        <div id="errores"></div>
+    </div>
+   
+
+    <script>
+        function validarForm(form){ //DESGRANAMOS CADA CAMPO DEL FORMULARIO
+            var nombre = form.nombre.value;
+            var edad = form.edad.value;
+            var aficion = form.aficion.value;
+            var mensajeError = ""; //CREAMOS UN MENSAJE DE ERROR VACIO
+            if (nombre.length == 0) { //SI LONGITUD DEL NOMBRE == 0 CONCATENAMOS EL MENSAJE DE ERROR PARA EL NOMBRE
+                mensajeError += "El nombre no debe estar vacio</br>"; 
+            }
+            if (edad < 18) { //SI LA EDAD ES MENOR DE 18, CONCATENAMOS EL MENSAJE DE ERROR PARA LA EDAD
+                mensajeError += "La edad debe ser mayor de 18 </br>"; 
+            }
+            if (aficion == 1) { //SI LA AFICION ES LA PREDETERMINADA CONCATENAMOS EL MENSAJE DE ERROR PARA AFICION
+                mensajeError += "Debe seleccionar una aficion</br>"; 
+            }
+            if (mensajeError.length > 0) { //SI EL MENSAJE DE ERROR NO ESTA VACIO, LO IMPRIMIMOS EN PANTALLA EN SU DIV CORRESPONDIENTE
+                document.getElementById('errores').innerHTML=mensajeError;
+            } else { //SI ESTA VACIO, ABRIMOS UNA NUEVA VENTANA CON EL RESULTADO 
+
+                //No recuerdo como era para abrir una ventana con el contenido que quisiesemos
+                //Asi que lo hago con esta misma al menos//;
+                mensajeError += "<h1>Bienvenid@ a mi Web "+nombre+" con "+edad+" años de edad y con afición en "+aficion+"</h1>";
+                mensajeError +=  ' <form class="form mt-5"><select name="color" class="form-control">';
+                    mensajeError += '<option value="red" selected>Rojo</option>';
+                    mensajeError += '<option value="yellow">Amarillo</option>';
+                    mensajeError += '<option value="blue">Azul</option></select>';
+                    mensajeError += '<input class="btn btn-primary mt-5" value="Enviar" onclick=cambiarColor(this.form)"></form>'
+                    document.getElementById('errores').innerHTML=mensajeError;
+                
+            }
+            
+        }
+        function cambiarColor(form){
+            //var color = form.color.value;
+            document.bgColor = "red"; 
+            //Y aqui acaba mi aventura, la idea era pasar la eleccion del select y cambiar desde
+            //esta funcion el color de fondo, pero por lo que sea no entra.
+        }
+        
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1</title>
+</head>
+<body>
+    <script>
+        var primos = Array();
+    
+        //BUCLE PARA CREAR EL ARRAY
+        for (let i = 1; primos.length < 15; i++) { //REPETIMOS EL BUCLE HASTA QUE PRIMOS TENGA 15 VALORES
+            var primo = true; //ASIGNAMOS UN BOOLEAN A TRUE
+            for (let j = 2; j <= i / 2; j++) {
+		        if (i % j == 0) {
+                    primo = false; //SI EL NUMERO NO CUMPLE EN ALGUNAS DE LAS DIVISIONES, LO PASA A FALSE
+                }
+	        }
+            if (primo == true) { //SI DESPUES DEL BUCLE SIGUE SIENDO TRUE, LO METE EN EL ARRAY
+                primos.unshift(i); //USANDO UNSHIFT LOS VAMOS METIENDO LOS PRIMEROS DEL ARRAY
+            }
+        }
+        function invertirArray(array) {
+            let arrayInvertido = Array();
+            arrayInvertido = array.reverse();
+            return arrayInvertido;
+        }
+
+        function visualizarArray(array) {
+            for (let index = 0; index < array.length; index++) { //SACAMOS UNO A UNO Y LOS PINTAMOS
+            document.write(array[index] + ", ");
+           
+            }
+        }
+      
+        visualizarArray(primos);
+        var arrayInvertido = invertirArray(primos);
+        visualizarArray(arrayInvertido);
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E1</title>
+</head>
+<body>
+    <script>
+        function mediaAritmetica(array) {
+            var total = 0;
+            for (let i = 0; i < array.length; i++) {
+                total = total + parseInt(array[i]);
+            }
+            var media = total/array.length;
+            return media;
+        }
+        var media = new Array;
+        for (let i = 0; i <= 4; i++) {
+            media.push(prompt("introduce el numero "+i+1+" para la media: "));
+        }
+        document.write(mediaAritmetica(media));
+    </script>
+</body>
+</html>

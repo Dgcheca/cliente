@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <script>
+        alumnos = ['Alumno', 'Cliente', 'Servidor', 'Diseño', 'Despliegue'];
+        notas = [['Juan', 9, 8, 9.3, 10], ['Ismael', 8, 9, 8.8, 10], ['Dani', 10, 9.8, 8, 9], ['Francisco', 9.6, 8, 9, 9],
+        ['Manuel', 8.6, 9, 8, 8]];
+
+        function mostrarResultados() {//UNA FUNCION QUE ACTIVA EL RESTO DE FUNCIONES
+            pintarNotas();
+            calcularMedia(notas);
+            notaMasAlta(notas);
+            notaMediaServidor(notas);
+            peorNota(notas);
+        }
+
+        function calcularMedia(array) {
+            //CREAMOS LA TABLA CON UN H1 A MODO DE TITULO
+            resultado = '<h1>Notas medias por Alumno</h1><table class="table table-bordered table-striped table-hover mt-5"><thead>';
+            for (let i = 0; i < array.length; i++) {//NOS CREA LA CABECERA DE LA TABLA
+                resultado += "<th>" + array[i][0] + "</th>";//SACANDO LOS NOMBRES DE LAS ASIGNATURAS
+            }
+            resultado += "</thead><tbody><tr>";
+            for (let i = 0; i < array.length; i++) {//POR CADA CICLO SUMAMOS TODAS LAS NOTAS DE CADA ALUMNO
+                var media = array[i][1] + array[i][2] + array[i][3] + array[i][4];
+                resultado += "<td>" + media/array.length + "</td>";//Y PINTAMOS LA MEDIA YA DIVIDIDA
+            }
+            resultado += "</tr></tbody></table>";//CERRAMOS LA TABLA
+            document.getElementById('medias').innerHTML = resultado; //LA PINTAMOS EN SU DIV
+        }
+        function notaMasAlta(array) {
+            var mayor = 0;
+            var alumno = "";
+            for (let i = 0; i < array.length; i++) {
+                if (i == 0) {
+                    mayor = array[i][1]; //GUARDAMOS LA PRIMERA NOTA SIEMPRE
+                    alumno = array[i][0]; //Y A QUIEN PERTENECE
+                } else {
+                    if (array[i][1] > mayor) {
+                        mayor = array[i][1]; //SI ALGUNA NOTA ES MAYOR A LA ANTERIOR, LA SUSTITUIMOS
+                        alumno = array[i][0]; //Y A QUIEN PERTENECE
+                    }
+                }
+                //MENSAJE A PINTAR EN SU DIV CORRESPONDIENTE
+                var mensaje = "La nota mas alta en Cliente es " + alumno + " con un " + mayor;
+                document.getElementById('mayorCliente').innerHTML = mensaje;
+            }
+        }
+        function notaMediaServidor(array) {
+            var media = 0;
+            var mediaTotal = 0;
+            for (let i = 0; i < array.length; i++) {
+                media += array[i][2];//RECORREMOS TODOS LOS ALUMNOS Y SUMAMOS SU NOTA EN SERVIDOR
+            }
+            mediaTotal = media/array.length;//DIVIDIMOS LA SUMA POR EL NUMERO DE ALUMNOS
+
+             //MENSAJE A PINTAR EN SU DIV CORRESPONDIENTE
+            var mensaje = "La media de notas en Servidor es " + mediaTotal;
+            document.getElementById('mediaServidor').innerHTML = mensaje;
+            
+        }
+        function peorNota(array) {
+            var peor = 0;
+            var suma = 0;
+            var alumno = "";
+            for (let i = 0; i < array.length; i++) { //SUMAMOS TODAS LAS NOTAS DE CADA ALUMNO
+                suma = array[i][1] + array[i][2] + array[i][3] + array[i][4];
+                if (i == 0) {
+                    peor = suma / array.length; //GUARDAMOS SIEMPRE LA PRIMERA MEDIA
+                    alumno = array[i][0]; //Y A QUIEN PERTENECE
+                } else {
+                    if (suma / array.length < peor) {
+                        peor = suma / array.length; //SI LA MEDIA DEL SIGUIENTE ES PEOR QUE LA ANTERIOR
+                        //LA SUSTITUIMOS 
+                        alumno = array[i][0];//Y A QUIEN PERTENECE
+                    }
+                }
+            }
+             //MENSAJE A PINTAR EN SU DIV CORRESPONDIENTE
+            var mensaje = "La peor nota de todas es: " + peor + " y es del alumno "+alumno;
+            document.getElementById('peorNota').innerHTML = mensaje;
+        }
+        function pintarNotas() {
+            //EN RESUMEN, CONSTRUIMOS TODA LA TABLA CON CADA NOTA Y ALUMNO Y LUEGO LO PINTAMOS TODO
+            resultado = '<table class="table table-bordered table-striped table-hover mt-5"><thead>';
+            for (let i = 0; i < alumnos.length; i++) {
+                resultado += "<th>" + alumnos[i] + "</th>";
+            }
+            resultado += "</thead><tbody>";
+            for (let i = 0; i < notas.length; i++) {
+                resultado += "<tr>";
+                resultado += "<td>" + notas[i][0] + "</td><td>" + notas[i][1] + "</td><td>" + notas[i][2] + "</td><td>" + notas[i][3] + "</td><td>" + notas[i][4] + "</td>";
+                resultado += "</tr>";
+            }
+            resultado += "</tbody></table>";
+            document.getElementById('resultados').innerHTML = resultado;
+        }
+        notas.push(['Alberto', 6, 6.7, 6.8, 5]); //AGREGAMOS A ALBERTO
+    </script>
+<!--HE PREFERIDO SEGUIR MOSTRANDOLO EN LOS DIVS AUN NO HACIENDO FALTA PARA QUE NO TENGA QUE RECARGAR CON EL DOCUMENT.WRITE-->
+    <div class="container"> 
+        <!--DANDO AL BOTON LLAMAMOS A LA FUNCION GENERAL QUE LLAMA A TODAS-->
+        <input class="btn btn-primary mt-5" value="Ver Resultados" onclick="mostrarResultados()">
+        <div id="resultados"></div>
+        <div id="medias"></div>
+        <div id="mayorCliente"></div>
+        <div id="mediaServidor"></div>
+        <div id="peorNota"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e3</title>
+</head>
+
+<body>
+    <script>
+        function comprobarDNI(dniCompleto) { //PASAMOS UN DNI COMPLETO CON LETRA
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            var resultado = true;
+            if (dniCompleto.length <= 8) {
+                resultado = false;
+            } else {
+                let letra = dniCompleto[8]; //LA POSICION 8 SIEMPRE CORRESPONDE A LA LETRA, LA SEPARAMOS
+                let dni = dniCompleto.slice(0, 8); //SEPARAMOS EL RESTO PARA TENER LOS NUMEROS APARTE
+                return (letras[dni % 23] == letra); //REPETIMOS LA JUGADA COMPROBANDO LA LETRA DEL ARRAY
+                //Y DEVOLVEMOS TRUE O FALSE SI COINCIDE O NO CON LA LETRA QUE TENIA ASIGNADA ANTES
+            }
+            return resultado;
+            //Y DEVOLVEMOS TRUE O FALSE SI COINCIDE O NO CON LA LETRA QUE TENIA ASIGNADA ANTES
+        };
+
+        function Diputado(nombre, apellidos, dni, edad, partido) {
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            if (comprobarDNI(dni) == true) { //PASO EL DNI POR LA FUNCION PARA COMPROBAR QUE ES CORRECTO
+                this.dni = dni;
+            } else {
+                this.dni = "Dni Incorrecto"; //SI NO ES CORRECTO LO GUARDAMOS COMO MENSAJE DE ERROR
+            }
+            if (edad >= 18 && edad < 200) { //COMPROBAMOS QUE LA EDAD ES CORRECTA(HE PUESTO 18 EN VEZ DE 0)
+                this.edad = edad
+            } else {
+                this.edad = "Edad incorrecta";//SI NO ES CORRECTO LO GUARDAMOS COMO MENSAJE DE ERROR
+            }
+            this.partido = partido;
+            //DESDE AQUI DEFINIMOS LOS GETS Y LOS SETS
+            this.getNombre = function () {
+                return this.nombre;
+            }
+            this.setNombre = function (nuevoNombre) {
+                this.nombre = nuevoNombre;
+            }
+            this.getApellidos = function () {
+                return this.apellidos;
+            }
+            this.setApellidos = function (nuevoApellidos) {
+                this.apellidos = nuevoApellidos;
+            }
+            this.getDNI = function () {
+                return this.dni;
+            }
+            this.setDNI = function (nuevoDNI) { //A LA HORA DE HACER UN SET DE DNI COMPROBAMOS TAMBIEN QUE SEA CORRECTO
+                let cambio = true;
+                if (comprobarDNI(nuevoDNI)) {
+                    this.dni = nuevoDNI;
+                } else {
+                    cambio = false; //EN CASO DE QUE SEA INCORRECTO, NO LO CAMBIA Y DEVUELVE FALSE
+                }
+                return cambio;
+            }
+            this.getEdad = function () {
+                return this.edad;
+            }
+            this.setEdad = function (nuevoEdad) { //REPITO EL PROCESO PARA LA EDAD (AUNQUE NO SE PEDIA)
+                let cambio = true;
+                if (nuevoEdad >= 18 && nuevoEdad <=200){
+                    this.edad = nuevoEdad;
+                } else {
+                    cambio = false; //EN CASO DE QUE SEA INCORRECTO, NO LO CAMBIA Y DEVUELVE FALSE
+                }
+                return cambio;
+            }
+            this.getPartido = function () {
+                return this.partido;
+            }
+            this.setPartido = function (nuevoPartido) {
+                this.partido = nuevoPartido;
+            }
+            this.toString = function () { //UN TOSTRING CONCATENANDO TODAS LAS PROPIEDADES DE DIPUTADO
+                document.write(this.nombre + " " + this.apellidos + ", " + this.dni + ", " + this.edad + ", " + this.partido + " ");
+            }
+        }
+
+        var dipu1 = new Diputado("Herminio", "Cabezas", "74727230T", 30, "Verde"); //pongo uno correcto para comprobar que funciona
+        var dipu2 = new Diputado("Manolo", "López", "12349", 20, "Azul");
+        var dipu3 = new Diputado("Jacobo", "Sánchez", "12349", 53, "Amarillo");
+        var arrayParlamento = Array();
+        arrayParlamento.push(dipu1,dipu2,dipu3);
+        dipu1.toString();
+        document.write("<br>");
+        dipu2.toString();
+        document.write("<br>");
+        dipu3.toString();
+        document.write("<br>");
+
+        dipu2.setDNI("74727230T");
+        dipu2.toString();
+        document.write("<br>");
+        arrayParlamento.sort(function (a, b) {
+            return a.getEdad() - b.getEdad();
+        });
+        for (let i = 0; i < arrayParlamento.length; i++) {
+            arrayParlamento[i].toString();
+            document.write("<br>");
+        }
+    </script>
+</body>
+
+</html>
