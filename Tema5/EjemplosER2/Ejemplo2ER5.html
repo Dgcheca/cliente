@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <script type="text/javascript">
+        function comprobarPalabra() {
+            let texto =  document.getElementById("texto").value;
+            texto = normalizar(texto);
+            let minimo = document.getElementById("tam").value;
+            let textocortado = texto.split(" ");
+
+            let mensajefinal = [];
+
+            for (let i = 0; i < textocortado.length; i++) {
+                if (textocortado[i].length >= minimo) {
+                    mensajefinal.push(textocortado[i]);
+                }
+                
+            }
+            document.getElementById("result").innerHTML = mensajefinal;
+        }
+        function normalizar(texto){
+            var result = texto.toLowerCase();
+            result = result.replace(/[\[(){}*+?^$-_,:;"\'&@.<>|]+/g, '');
+            return result;
+        }
+
+        window.onload = function () {
+            document.getElementById("buscar").addEventListener("click",comprobarPalabra,false)
+        }
+    </script>
+    
+    <div class="container">
+        <div class="row">
+            <h1>Buscador de palabras por tamaño</h1>
+        </div>
+        <div class="row">
+            <textarea name="texto" id="texto" cols="50" rows="10"></textarea>
+        </div>
+        <div class="row">
+            <div class="col -12">
+                <p>Minimo numero de caracteres de la palabra ></p>
+                <input type="number" id="tam" min="0" max="25" value="3">
+                <input type="button" id="buscar" value="Buscar">
+            </div>
+        </div>
+        <div class="row">
+            <div id="result"></div>
+        </div>
+    </div>
+
+</body>
+</html>
