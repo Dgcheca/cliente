@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E4</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <script>
+
+    var imagenes = [
+            "imagenes/img01.jpg",
+            "imagenes/img02.jpg",
+            "imagenes/img03.jpg",
+            "imagenes/img04.jpg",
+            "imagenes/img05.jpg",
+            "imagenes/img06.jpg"
+                ];
+    var indice = 0;
+    var longitud = imagenes.length;
+
+
+        function retrocederImagen() {
+            if (indice == 0) {
+                indice = longitud-1;
+            } else {
+                indice -= 1;
+            }
+            let link = imagenes[indice];
+            let caja = document.getElementById("imagen");
+            caja.src = link;
+
+        }
+
+        function avanzarImagen() {
+            if (indice == longitud-1) {
+                indice = 0;
+            } else {
+                indice += 1;
+            }
+            let link = imagenes[indice];
+            let caja = document.getElementById("imagen");
+            caja.src = link;
+
+        }
+
+
+        window.onload = function () {
+            document.getElementById("retroceder").addEventListener("click",retrocederImagen,false)
+            document.getElementById("avanzar").addEventListener("click",avanzarImagen,false)
+        }
+    </script>
+
+    <div class="container">
+        <div class="row">
+            <div><img id="imagen" src="imagenes/img01.jpg" alt=""></div>
+        </div>
+        <div class="row">
+            <div class="botones ">
+                <button id = "retroceder" type="button" class="btn btn-primary"><-</button>
+                <button id = "avanzar" type="button" class="btn btn-primary">-></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

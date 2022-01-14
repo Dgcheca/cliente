@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e1</title>
+</head>
+
+<script>
+    function mostrararray(){
+        var personas = ['pepe', 'lola', 'juan', 'lucas', 'lorena', 'asunta'];
+        var capa = document.getElementById("capa");
+        var formu = '<form name="formulario">';
+        formu +='<input type="checkbox" id="todos">Seleccionar todos<br>';
+        for (var i =0; i< personas.length; i++){
+            formu +='<input type="checkbox" name="item" value="'+personas[i]+'">'+personas[i]+'<br>';
+        }
+        formu += '</form>';
+        capa.innerHTML = formu;
+    }
+    
+    function enviartexto(){
+            document.getElementById("texto").value = "";
+            var items = document.getElementsByName("item");
+            for (var i =0; i< items.length; i++){
+                if(items[i].checked == true){
+                    document.getElementById("texto").value += items[i].value+'\n';
+                    
+                }
+            }
+    }
+    
+    function seleccionartodos(){
+        var item = document.getElementsByName("item");
+            var checkear;
+            if(todos.checked == true){
+                checkear = true;
+            }
+            else{
+                checkear = false;
+            }
+            for(var i = 0;i < item.length;i++){
+                item[i].checked = checkear;
+            }  
+    }
+    
+    function deseleccionartodos(){
+        document.write("hola");
+        var todos = document.getElementById("todos");
+        if (todos.checked == true){
+            todos.checked = false;
+        }
+    }
+
+    window.onload = function(){
+        mostrararray();
+        document.getElementById("enviar").addEventListener("click",enviartexto,false)
+        document.getElementById("todos").addEventListener("change",seleccionartodos,false)
+        var items = document.getElementsByName("item")
+        for (let i = 0; i < items.length; i++) {
+           if (items[i].checked == false) {
+            items.addEventListener("change",deseleccionartodos,false);
+           }
+            
+        }
+        
+       
+    }
+</script>
+<body>
+    <div id="contenedor">
+        <div id="capa">
+            <form name="formulario">
+                <input type="checkbox" id="todos">Seleccionar todos<br>
+                <input type="checkbox" name="item" value="1">Item1<br>
+                <input type="checkbox" name="item" value="2">Item2<br>
+                <input type="checkbox" name="item" value="3">Item3<br>
+                <input type="checkbox" name="item" value="4">Item4<br>
+                <input type="checkbox" name="item" value="5">Item5<br>
+                <input type="checkbox" name="item" value="6">Item6<br>
+                <input type="checkbox" name="item" value="7">Item7<br>
+            </form>
+        </div>
+        <div id="capa2">
+            <input type="button" value="Enviar>>" id="enviar">
+            <textarea name="" id="texto" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+
+</body>
+</html>

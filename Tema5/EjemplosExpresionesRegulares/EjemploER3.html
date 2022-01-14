@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej3</title>
+    <script>
+
+        function verPalabras() {
+            var texto = document.getElementById("texto").value;
+            var items = document.getElementById("palabra");
+            var palabras = texto.split(" ");
+            var web = "";
+            let palabrasFiltrado = [];
+            for (let i = 0; i < palabras.length; i++) {
+                if (!palabrasFiltrado.includes(palabras[i])) {
+                    palabrasFiltrado.push(palabras[i]);
+                }
+            }
+        
+
+           
+            for (var i = 0; i < palabrasFiltrado.length; i++) {
+                web += '<input type="checkbox" name="item" value="' + palabrasFiltrado[i] + '">' + palabrasFiltrado[i] + '<br>';
+            }
+            items.innerHTML = web;
+            console.log(palabrasFiltrado);
+        }
+
+        function seleccionarItems() {
+            var item = document.getElementsByName("item");
+            var checkear;
+            if (todos.checked == true) {
+                checkear = true;
+            } else {
+                checkear = false;
+            }
+            for (var i = 0; i < item.length; i++) {
+                item[i].checked = checkear;
+            }
+        }
+
+       window.onload = function () {
+            document.getElementById("ver").addEventListener("click",verPalabras,false);
+            document.getElementById("todos").addEventListener("change",seleccionarItems,false) ;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="capa">
+            <form name="formulario">
+                <textarea name="" id="texto" cols="30" rows="10"></textarea>
+                <input type="button" id="ver" value="Ver palabras"><br><br>
+                <input type="checkbox" id="todos">Seleccionar todos<br>
+                <div id="palabra"></div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
