@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <title>Travial</title>
+    </head>
+
+    <script>
+
+    // Funcion que añade un <li> dentro del <ul>
+        var numeroId = 1;
+        function add_li()
+        {
+            var nuevoLi=document.getElementById("nuevo_li").value;
+            if(nuevoLi.length>0)
+            {
+                if(find_li(nuevoLi))
+                {
+                    var li=document.createElement('li');
+                    li.id="licreado"+numeroId;
+                    li.innerHTML="<span class='btn btn-danger' id='"+numeroId+"' name='borrar'>X</span>"+nuevoLi;
+                    document.getElementById("listaDesordenada").appendChild(li);
+                    numeroId +=1;
+                }
+            }
+            return false;
+        }
+
+        //Funcion que busca si existe ya el <li> dentrol del <ul> Devuelve true si no existe.
+        function find_li(contenido)
+        {
+            var el = document.getElementById("listaDesordenada").getElementsByTagName("li");
+            for (var i=0; i<el.length; i++)
+            {
+                if(el[i].innerHTML==contenido)
+                    return false;
+            }
+            return true;
+        }
+
+
+        //Funcion para eliminar los elementos, tiene que recibir el elemento pulsado
+        // function eliminar(elemento)
+        // {
+        //     // var id=elemento.parentNode.getAttribute("id");
+        //     // node=document.getElementById(id);
+        //     // node.parentNode.removeChild(node);
+        // }
+
+        window.onload = function () {
+            document.getElementById("enviar").addEventListener("click",add_li,false);
+            
+            document.getElementById("listaDesordenada").addEventListener("click", function (e) {
+                let botonBorrar = e.target.closest("span[name=borrar]");
+		        if (botonBorrar) {
+                    var id=botonBorrar.parentNode.getAttribute("id");
+                    node=document.getElementById(id);
+                    node.parentNode.removeChild(node);
+                }
+            })
+        }
+    </script>
+ 
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1 class="mb-3">Añadir y eliminar elementos li de una lista desordenada ul con javascript</h1>
+            </div>
+           
+                
+            <form class="form">
+            <div class="mb-3 row">
+                <div class="col-4">
+                    <input class="form-control" type="text" id="nuevo_li">
+                </div>
+                <input class="btn btn-dark col-1" id="enviar" type="button" value="añadir li">
+            </div>
+        </form>
+            
+            
+            <div class="row">
+                
+        <ul id="listaDesordenada">
+        </ul>
+            </div>
+        </div>
+       
+       
+    
+    </body>
+</html>

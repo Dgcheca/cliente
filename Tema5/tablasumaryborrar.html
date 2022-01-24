@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tablas</title>
+</head>
+<body>
+    <script>
+        function addfila() {
+            console.log("hola");
+        }
+        function remfila() {
+            console.log("hola");
+        }
+
+        window.onload = function () {
+            document.getElementById("sumar").addEventListener("click",addfila,false);
+            document.getElementById("restar").addEventListener("click",remfila,false);
+        }
+    </script>
+    <table>
+        <tr>
+            <td>1.1</td>
+            <td>1.2</td>
+            <td>1.3</td>
+            <td>
+                <input type="button" name="addfila" value="+" id="sumar">
+                <input type="button" name="addfila" value="-" id="restar">
+            </td>
+        </tr>
+        <tr>
+            <td>2.1</td>
+            <td>2.2</td>
+            <td>2.3</td>
+            <td>
+                <input type="button" name="addfila" value="+" id="sumar">
+                <input type="button" name="addfila" value="-" id="restar">
+            </td>
+        </tr>
+        <tr>
+            <td>3.1</td>
+            <td>3.2</td>
+            <td>3.3</td>
+            <td>
+                <input type="button" name="addfila" value="+" id="sumar">
+                <input type="button" name="addfila" value="-" id="restar">
+            </td>
+        </tr>
+    </table>
+    <div id="contenedor">
+        <form action="">
+            Celda1 1: <input type="text" id="cl1">
+            Celda1 2: <input type="text" id="cl2">
+            Celda1 3: <input type="text" id="cl3">
+        </form>
+    </div>
+</body>
+</html>

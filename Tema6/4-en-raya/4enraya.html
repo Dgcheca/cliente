@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Conecta: 4 en raya</title>
+    <style>
+        div#tablero {
+            border: 10px solid #2e4f98;
+            padding: 0px;
+            margin: 0px auto;
+            background-color: beige;
+            opacity: 0.8;
+            width: 700px;
+        }
+        
+        .clearfix {
+            overflow: hidden;
+        }
+        
+        div#finjuego {
+            background: red;
+            position: absolute;
+            left: 40%;
+            top: 20%;
+            min-height: 100px;
+            display: none;
+        }
+        
+        div.celda {
+            background: url(imagenes/tablero.png) no-repeat;
+            padding: 0;
+            margin: 0;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+    </style>
+    <script>
+        /*function Sound(source, volume, loop) {
+            this.source = source;
+            this.volume = volume;
+            this.loop = loop;
+            var son;
+            this.son = son;
+            this.finish = false;
+            this.stop = function () {
+                document.body.removeChild(this.son);
+            }
+            this.start = function () {
+                if (this.finish) return false;
+                this.son = document.createElement("embed");
+                this.son.setAttribute("src", this.source);
+                this.son.setAttribute("hidden", "true");
+                this.son.setAttribute("volume", this.volume);
+                this.son.setAttribute("autostart", "true");
+                this.son.setAttribute("loop", this.loop);
+                document.body.appendChild(this.son);
+            }
+            this.remove = function () {
+                document.body.removeChild(this.son);
+                this.finish = true;
+            }
+            this.init = function (volume, loop) {
+                this.finish = false;
+                this.volume = volume;
+                this.loop = loop;
+            }
+        }*/
+
+        function finDeJuego() {
+            var ganador = comprobarFilas();
+            if (ganador != 0) {
+                console.log("Fin de juego", ganador);
+                return true;
+            }
+            ganador = comprobarColumnas();
+            if (ganador != 0) {
+                console.log("Fin de juego", ganador);
+                return true;
+            }
+            return false;
+        }
+
+        function getIdCelda(col) {
+            for (var i = 5; i > -1; i--) {
+                var idCelda = i + "x" + col;
+                if (document.getElementById(idCelda).innerHTML == "") {
+                    return idCelda;
+                }
+            }
+            return -1;
+        }
+        
+        //Devolvemos 0 si la fila no tiene 4 fichas adyacentes, devolvemos roja si hay 4 rojas adyacentes, y devolvemos amarillas si hay 4 amarillas adyacentes
+        function comprobarFilas() {
+            var fil = 6;
+            var col = 7;            
+            var cont = 0;
+            for (var i = 0; i < fil; i++) {
+                var celda1 = document.getElementById(i + "x" + 0);
+                for (var j = 1; j < col; j++) {
+                    if (cont > 3)
+                        return celda2.firstChild.className;
+
+                    var idCelda = i + "x" + j;
+                    celda2 = document.getElementById(idCelda);
+                    if (celda2.innerHTML != "") {
+                        if (celda1.innerHTML == celda2.innerHTML) {
+                            cont++;
+                        } else {
+                            cont = 1;
+                        }
+                    } else {
+                        cont = 0;
+                    }
+                    celda1 = celda2;
+                }
+            }
+            return 0;
+        }
+        
+        function comprobarColumnas() {
+            var fil = 6;
+            var col = 7;            
+
+            var cont = 0;
+            for (var i = 0; i < col; i++) {
+                var celda1 = document.getElementById(0 + "x" + i);
+                for (var j = 1; j < fil; j++) {
+                    if (cont > 3)
+                        return celda2.firstChild.className;
+
+                    var idCelda = j + "x" + i;
+                    celda2 = document.getElementById(idCelda);
+                    if (celda2.innerHTML != "") {
+                        if (celda1.innerHTML == celda2.innerHTML) {
+                            cont++;
+                        } else {
+                            cont = 1;
+                        }
+                    } else {
+                        cont = 0;
+                    }
+                    console.log(celda1.id + " " + celda2.id);
+                    celda1 = celda2;
+                }
+            }
+            return 0;
+        }
+        
+        function colocarFicha(celda) {
+            if (ganador != "") {
+                return 0;
+            }
+            var col = celda.id[2];
+            var idCelda = getIdCelda(col);
+            var ficha = document.createElement("img");
+
+            ficha.style.margin = "5px";
+            if (idCelda != -1) {
+                if (turno == 0) {
+                    ficha.setAttribute("src", "imagenes/piezaroja.png");
+                    ficha.className = "roja";
+                    turno = 1;
+                } else {
+                    ficha.setAttribute("src", "imagenes/piezamarilla.png");
+                    ficha.className = "amarilla";
+                    turno = 0;
+                }
+                document.getElementById(idCelda).appendChild(ficha);
+            }
+            if (finDeJuego()) {
+                return 0;
+            }
+        }
+
+        function crearTablero() {
+            var tablero = document.getElementById("tablero");
+            var fil = 6;
+            var col = 7;
+            for (var i = 0; i < fil; i++) {
+                for (var j = 0; j < col; j++) {
+                    var celda = document.createElement("div");
+                    var idCelda = i + "x" + j;
+                    celda.setAttribute("id", idCelda);
+                    celda.className = "celda";
+                    celda.onclick = function () {
+                        colocarFicha(this);
+                    }
+                    tablero.appendChild(celda);
+                }
+            }
+
+        }
+        //turno = 0 es jugador1 y turno = 1 es jugador 2
+        var turno = 0;
+        var ganador = "";
+        window.onload = function () {
+            //var fondo = new Sound("sonidos/got.mp3", 50, true);
+            //fondo.start();
+            crearTablero();
+        }
+    </script>
+</head>
+<body>
+    <div id="tablero" class="clearfix"></div>
+</body>
+</html>

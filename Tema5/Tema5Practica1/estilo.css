@@ -1,0 +1,12 @@
+.titulo{
+    color: #8A185F;
+}
+
+.navegador{
+    background-color: #8A185F;
+}
+
+.campoerror{
+    height: 40px;
+    color: red;
+}
