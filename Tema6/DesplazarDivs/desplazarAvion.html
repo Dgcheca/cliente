@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Desplazar DIV</title>
+    <style>
+        h1, div{
+            text-align: center;
+        }
+        div {
+            position: relative;
+            margin: 500px auto 0;
+            width: 300px;
+            height: 300px;
+            transition: top 0.5s ease-out, right 0.5s ease-out;
+            top: 0px;
+            right: 0px;
+        }
+        .avion {
+            width: 200px;
+            height: 200px;
+        }
+    </style>    
+    <script>        
+        function desplazaDiv(tecla){
+			console.log(tecla.type);
+            var teclaPulsada = tecla;            
+            if (teclaPulsada.keyCode == 37) {
+                margenDerecho += 20;
+                caja.style.right = margenDerecho + "px";
+            } else if (teclaPulsada.keyCode == 39) {
+                margenDerecho -= 20;
+                caja.style.right = margenDerecho + "px";
+            }
+        }
+    
+        window.onload = function(){
+            margenDerecho = 0;
+            margenSuperior = 0;            
+            var caja = document.getElementById("caja");
+            document.addEventListener('keyup',desplazaDiv,false);
+        }
+    </script>    
+</head>
+<body>
+   <h1>&lt;&lt;Pulsa una Flecha&gt;&gt;</h1>   
+   <div id="caja"><img class="avion" src="avion.png" alt=""></div>
+</body>
+</html>

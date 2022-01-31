@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Rasma Butkute</title>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <input type="text" class="display" disabled placeholder="0">
+        <div class="keys">
+            <div class="row">
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+                <button value="*" class="operator">*</button>
+
+            </div>
+            <div class="row">
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button value="-" class="operator">-</button>
+            </div>
+            <div class="row">
+                <button value="1">1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button value="+" class="operator">+</button>
+            </div>
+            <div class="row">
+                <button value="C" class="operator">C</button>
+                <button value="0">0</button>
+                <button value="/" class="operator">/</button>
+                <button value="=" class="operator">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const display = document.querySelector('.display');
+        const buttons = document.querySelectorAll('button');
+
+        function calcularConBotones(e) {
+            const buttonValue = e.target.value;
+
+            if (buttonValue === '=') {
+                // si el valor no está vacio, hacemos el calculo
+                if (display.value !== '') {
+                    display.value = eval(display.value);
+                }
+                // en caso de pulsar 'C' limpiamos el valor del display
+            } else if (buttonValue === 'C') {
+                display.value = '';
+                // en otro caso concatenamos los valores de botones pulsados
+            } else {
+                display.value += buttonValue;
+            }
+        }
+
+        function calcularConTeclas(e) {
+            let key = e.key;
+
+            if (e.keyCode == 13) {
+                if (display.value !== '') {
+                    display.value = eval(display.value);
+                }
+            } else if (key === 'Delete') {
+                display.value = '';
+            } else if (parseInt(key) || key == '0' || key == '*' || key == '-' || key == '+' || key == '/') {
+                display.value += key;
+            }
+        }
+
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", calcularConBotones);
+        });
+
+        document.addEventListener("keydown", calcularConTeclas);
+
+
+    </script>
+
+</body>
+
+</html>

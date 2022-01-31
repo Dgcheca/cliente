@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Capturar Eventos de Teclado</title>
+    <style>        
+        h1, div{
+            text-align: center;
+        }
+               
+        div {
+            margin: 100px auto;
+            font-size: 250px;
+            line-height: 380px;
+            width: 400px;
+            height: 400px;
+            border: 1px solid grey;
+        }
+    
+    </style>
+    
+    <script>
+   
+        function muestraLetra(tecla){
+            var teclaPulsada = tecla;
+            if (teclaPulsada.keyCode == 13) {
+                caracterPulsado = "Enter";
+            } else {
+            var caracterPulsado = String.fromCharCode(teclaPulsada.keyCode);
+            }
+            cajaresultado.innerHTML = caracterPulsado;
+        }
+    
+        window.onload = function(){
+            cajaresultado = document.querySelector("div");
+            document.onkeypress = muestraLetra;
+        }
+    
+    </script>
+    
+</head>
+<body>
+   
+   <h1>&lt;&lt;Pulsa una tecla&gt;&gt;</h1>
+   
+   <div></div>
+    
+</body>
+</html>

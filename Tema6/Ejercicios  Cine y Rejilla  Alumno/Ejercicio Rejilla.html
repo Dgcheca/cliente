@@ -44,10 +44,17 @@
 
         }
 		var colorActual = "black";
+
         window.onload = function () {
-			var colores = ["red", "green", "blue", "yellow", "orange", "pink", "black", "white"];
+			var colores = ["red", "green", "blue", "yellow", "orange", "pink", "black", "white", "brown", "cyan", "gray", "olive", "coral", "aqua", "khaki", "orchid"];
 			initPaletaColor(colores);
             crearRejilla(20, 20, 40);
+            document.getElementById("boton").addEventListener("click", function () {
+                let ancho = document.getElementById("columnas").value;
+                let largo = document.getElementById("filas").value;
+                let pixel = document.getElementById("tampunto").value;
+                crearRejilla(ancho,largo,pixel);
+            })
         }
     </script>
     <style>
