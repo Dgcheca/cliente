@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Ejercicio Nave Disparando</title>
+
+    <style>
+        #nave {
+            position: absolute;
+            transition: left 0.3s linear;
+            top: 200px;
+            left: 400px;
+        }
+        
+        #disparo {
+            position: absolute;
+            transition: top 1s ease-in, left 0.3s linear;
+            top: 200px;
+            left: 470px;
+        }
+    </style>
+
+    <script>
+        function comprobarTeclas(evento) {
+            var teclaPulsada = evento;
+
+            if (teclaPulsada.keyCode == 37) {
+                margenIzquierdoNave -= 10;
+                margenIzquierdoDisparo -= 10;
+                nave.style.left = margenIzquierdoNave + "px";
+                disparo.style.left = margenIzquierdoDisparo + "px";
+            } else if (teclaPulsada.keyCode == 39) {
+                margenIzquierdoNave += 10;
+                margenIzquierdoDisparo += 10;
+                nave.style.left = margenIzquierdoNave + "px";
+                disparo.style.left = margenIzquierdoDisparo + "px";
+            }
+
+            if (teclaPulsada.keyCode == 13) {
+                disparo.style.top = "0px";
+                setTimeout(function(){disparo.style.top = "200px";}, 1000)
+            }
+        }
+
+
+        window.onload = function () {
+            margenIzquierdoNave = 400;
+            margenIzquierdoDisparo = 470;
+
+            nave = document.querySelector("#nave");
+            disparo = document.querySelector("#disparo");
+        }
+        
+    </script>
+</head>
+
+<body onkeydown="comprobarTeclas(event); ">
+    <p><img id="nave" src="nave.png" alt="nave" width="150" height="150"> </p>
+    <p><img id="disparo" src="laser.png" alt="disparo" width="10" height="10"> </p>
+    <p>Pulse izquierda y derecha; Intro para disparar</p>
+
+</body>
+
+</html>

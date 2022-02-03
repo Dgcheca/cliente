@@ -1,0 +1,17 @@
+.celda-tablero{
+    border: solid 1px;
+    border-color: green;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+}
+
+
+.numeroid {
+    font-size: 55px;
+    margin: 0 auto;
+}
+
+.result {
+    margin: 15px;
+}

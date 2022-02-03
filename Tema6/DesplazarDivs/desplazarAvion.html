@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicio Desplazar DIV</title>
+    <title>Ejercicio Desplazar Avion</title>
     <style>
         h1, div{
             text-align: center;
         }
-        div {
-            position: relative;
-            margin: 500px auto 0;
-            width: 300px;
-            height: 300px;
-            transition: top 0.5s ease-out, right 0.5s ease-out;
-            top: 0px;
-            right: 0px;
+        #cajaAvion {
+            position: absolute;
+            transition: left 0.3s linear;
+            top: 200px;
+            left: 400px;
+        }
+        #laser {
+            position: absolute;
+            transition: top 1s ease-in, left 0.3s linear;
+            top: 200px;
+            left: 500px;
         }
         .avion {
             width: 200px;
@@ -27,23 +30,27 @@
             var teclaPulsada = tecla;            
             if (teclaPulsada.keyCode == 37) {
                 margenDerecho += 20;
-                caja.style.right = margenDerecho + "px";
+                cajaAvion.style.right = margenDerecho + "px";
+                laser.style.right = margenDerecho + "px";
             } else if (teclaPulsada.keyCode == 39) {
                 margenDerecho -= 20;
-                caja.style.right = margenDerecho + "px";
+                cajaAvion.style.right = margenDerecho + "px";
+                laser.style.right = margenDerecho + "px";
             }
         }
     
         window.onload = function(){
             margenDerecho = 0;
             margenSuperior = 0;            
-            var caja = document.getElementById("caja");
-            document.addEventListener('keyup',desplazaDiv,false);
+            var caja = document.getElementById("cajaAvion");
+            var laser = document.getElementById("laser");
+            document.addEventListener('keydown',desplazaDiv,false);
         }
     </script>    
 </head>
 <body>
    <h1>&lt;&lt;Pulsa una Flecha&gt;&gt;</h1>   
-   <div id="caja"><img class="avion" src="avion.png" alt=""></div>
+   <div id="cajaAvion"><img class="avion" src="avion.png" alt=""></div>
+   <div id="laser"><img class="laser" src="laser.png" alt=""></div>
 </body>
 </html>
