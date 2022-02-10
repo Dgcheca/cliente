@@ -98,7 +98,7 @@
         }
     }
 
-       //COMPRUEBA EL TEXTO DE EL CAMPO PREGUNTA
+    //COMPRUEBA EL TEXTO DE EL CAMPO PREGUNTA
     function comprobarpregunta(id) {
         var name = document.getElementById(id);
         var pregunta = name.value;
