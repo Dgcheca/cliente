@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio8</title>
+    <!--ESTILO-->
+    <style type="text/css">
+        #cajaPrincipal {
+            margin: auto;
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            border: 10px solid black;
+        }
+
+        #pieza {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        #cajaBotones{
+            margin-top: 15;
+            width: 100%;
+            text-align: center;
+        }
+        
+        #cajaBotones>input{
+            margin: 0 3px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+     <!--CODIGO-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('body').append('<div id="cajaPrincipal">' +
+                '<div id="pieza">'+
+                '</div>' +
+            '</div>' + 
+            '<div id="cajaBotones">' +
+                '<input type="button" value="Empezar" />'+
+                '<input type="button" value="Saltar Animacion" />'+
+                '<input type="button" value="Parar Todo" />'+
+                '<input type="button" value="Parar y Saltar" />'+
+                '<input type="button" value="Parar y Detener" />'+
+                '<input type="button" value="Ir al final" />' +
+            '</div>')
+                var ancho = ($('#cajaPrincipal').width() - $('#pieza').width());
+                var alto = ($('#cajaPrincipal').height() - $('#pieza').height());
+                var tiempo = 1500;
+                
+
+            $('input').click(function(){
+                if ($('input').val() == 'Empezar') {
+                    this
+                    $('#pieza').animate({'margin-left': ancho}, tiempo)
+                    .animate({'margin-top': alto} , tiempo)
+                    .animate({'margin-left': 0}, tiempo)
+                    .animate({'margin-top': 0}, tiempo);
+                    
+                }
+            });
+         });
+
+    </script>
+
+</head>
+
+<body>
+    
+</body>
+
+</html>

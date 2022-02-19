@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Examen 11 feb. Eventos en Javascript</title>
+	<meta name="author" content="Amador Campos Aznar" />
+	<style>
+		#nave {
+			position: absolute;
+			transition: left 0.3s linear;
+			top: 200px;
+			left: 400px;
+		}
+		#disparo {
+			position: absolute;
+			transition: top 1s ease-in, left 0.3s linear;
+			top: 200px;
+			left: 470px;
+		}
+	</style>
+	<script>
+        function comprobarTeclas(evento) {
+            var teclaPulsada = evento;
+            if (teclaPulsada.keyCode == 13) {
+                disparo.style.top = "0px";
+                setTimeout(function(){disparo.style.top = "200px";}, 1000)
+            }
+        }
+
+        window.onload = function () {
+            margenIzquierdoNave = 400;
+            margenIzquierdoDisparo = 470;
+            var nave = document.getElementById("nave");
+            var disparo = document.getElementById("disparo");
+            document.addEventListener("keydown",comprobarTeclas,false);
+        }
+    </script>
+</head>
+<body>
+	<p><img id="nave" src="./imagenes/nave.png" alt="nave" width="150" height="150"> </p>
+	<p><img id="disparo" src="./imagenes/laser.png" alt="disparo" width="10" height="10"> </p>
+	<p>Pulse izquierda y derecha; Intro para disparar</p>
+</body>
+</html>

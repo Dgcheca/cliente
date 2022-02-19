@@ -1,0 +1,29 @@
+.msjCorrecto, .msjError {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:13px;
+    text-align:left;
+    width:auto;
+}
+.msjError {
+    color: #D8000C;
+    background-color: #FFBABA;
+    display: none;
+    background-image: url('imagenes/error.jpeg');
+}
+.msjCorrecto {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    display: none;
+    background-image:url('imagenes/correcto.jpeg');
+}
+
+.asterisco {
+    color: red;
+    display: none;
+    font-size: 20px;
+}

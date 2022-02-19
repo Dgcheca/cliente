@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio4</title>
+    <style type="text/css">
+        .rectangulo {
+            margin: 100px;
+            width: 600px;
+            height: 400px;
+            background-color: red;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <label for="ancho">ANCHO</label>
+    <input type="text" name="ancho" id="ancho">
+    <label for="alto">ALTO</label>
+    <input type="text" name="alto" id="alto">
+    <div class="rectangulo" id="div"></div>
+    <button id="grande">Agrandar</button>
+    <button id="menor">Encoger</button>
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('button').click(function () {
+            if($(this).attr('id') == 'grande'){
+                $("#div").animate({'height': '+=' + $('#alto').val(),'width': '+=' + $('#ancho').val()});
+            } else if ($(this).attr('id') == 'menor'){
+                $("#div").animate({'height': '-=' + $('#alto').val(),'width': '-=' + $('#ancho').val()});
+            }
+            $('p').remove();
+            var ancho = $('#div').width();
+            var alto = $('#div').height();
+            $(this).parent().append('<p> Ancho -> ' + ancho + '</p>');
+            $(this).parent().append('<p> Alto -> ' + alto + '</p>');
+
+
+        })
+    });
+</script>
