@@ -49,7 +49,8 @@
             </button>
             <div class="collapse" id="tema8">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                -- EN CONSTRUCCION --
+              <li><a href="Tema8/relacion-1-angularJS" class="link-dark rounded">Relacion Ejercicios</a></li>
+                <li><a href="Tema8/ProyectoAngular" class="link-dark rounded">ProyectoAngular</a></li>
               </ul>
             </div>
           </li>
