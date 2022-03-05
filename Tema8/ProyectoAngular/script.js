@@ -1,14 +1,31 @@
 'use strict';
-var miApp = angular.module('miFoster', []);
-miApp.controller('CartaController', function() {
+var miApp = angular.module('miFoster', ["ngRoute"]);
+miApp.controller('CartaController', function($scope) {
     this.articulos = articulos;
     this.local = locales;
 });
+ //links
+miApp.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "home.php"
+    })
+    .when("/carta", {
+        templateUrl : "carta.php"
+    })
+    .when("/donde", {
+        templateUrl : "donde.php"
+    })
+});
+  
+
+  
 
 
 var locales = {
     localidad: 'Cuevas del Almanzora',
-    mensaje: '!Por fin un Foster Hollywood en Cuevas del Almanzora! !Visitanos en la Avenida Barcelona y pide nuestros platos mas iconicos!'
+    mensaje: '!Por fin un Foster Hollywood en Cuevas del Almanzora! !Visitanos en la Avenida Barcelona y pide nuestros platos mas iconicos!',
+    mapa: ''
 };
 
 
