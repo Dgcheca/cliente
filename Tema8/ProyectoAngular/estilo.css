@@ -5,3 +5,9 @@
 .navegador{
     height:80px
 }
+
+.active{
+    border-bottom: 1px solid ;
+    border-color : red;
+    font-weight: bolder;
+}

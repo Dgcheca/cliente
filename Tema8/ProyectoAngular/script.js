@@ -1,8 +1,13 @@
 'use strict';
 var miApp = angular.module('miFoster', ["ngRoute"]);
-miApp.controller('CartaController', function($scope) {
+
+miApp.controller('CartaController', function($scope, $rootScope, $location) {
     this.articulos = articulos;
     this.local = locales;
+    $scope.location = $location.path();
+    $rootScope.$on('$routeChangeSuccess', function() {
+        $scope.location = $location.path();
+    });
 });
  //links
 miApp.config(function($routeProvider) {
