@@ -61,9 +61,9 @@
 
             <div class="collapse navbar-collapse" id="navegadordrop">
                 <div class="navbar-nav row">
-                    <a ng-class="{active: location == '/'}" class="nav-item nav-link text-light banner col" href="#!/">Inicio</a>
-                    <a ng-class="{active: location == '/carta'}" class="nav-item nav-link text-light banner col" href="#!carta">La Carta</a>
-                    <a ng-class="{active: location == '/donde'}" class="nav-item nav-link text-light banner col" href="#!donde">Donde</a>
+                    <a ng-class="{active: location == '/'}" class="nav-item nav-link text-light banner col text-center" href="#!/">Inicio</a>
+                    <a ng-class="{active: location == '/carta'}" class="mr-5 nav-item nav-link text-light banner col text-center" href="#!carta">La Carta</a>
+                    <a ng-class="{active: location == '/donde'}" class="mr-5 nav-item nav-link text-light banner col text-center" href="#!donde">Donde</a>
                 </div>
             </div>
         </nav>
